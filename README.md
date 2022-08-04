@@ -4,4 +4,4 @@
 
 开发中。。。。（进度30/100）
 
-目前完成功能: 单层JSON转换Lua_Table
+目前完成功能: 单层JSON转换Lua_Table , JsonArray 转换数组
