@@ -1,16 +1,14 @@
 # Json2LuaTable
-This Project can convert json to lua table
+这个项目可以将Json转换为LuaTable的格式
 <br>
-Mainly used in some lua game management background
-<br>
-你可以在这里查看[中文文档](https://github.com/MrMao14/Json2LuaTable/blob/main/README_ZH.md)
-## How to use
-- code
+主要用于部分Lua构建的游戏
+## 如何使用
+- 示例
 ```java
 String jsonString = "{\"string\":\"abc\",\"int\":123,\"boolean\":false,\"Object\":{\"obj1\":123,\"obj2\":\"abc\"},\"array\":[\"aaa\",\"bbb\",\"ccc\"]}";
 System.out.println(JsonConvertLuaUtil.toLuaTable(jsonString));
 ```
-- result
+- 结果
 ```
 {
   ["string"] = "abc",
@@ -27,6 +25,6 @@ System.out.println(JsonConvertLuaUtil.toLuaTable(jsonString));
   ]
 }
 ```
-## Feature
-- Convert json file to lua table file
-- lua table json to json String
+## 展向未来
+- 转换Json文件到LuaTable文件
+- LuaTable字符串转换Json字符串
