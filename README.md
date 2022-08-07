@@ -2,6 +2,4 @@
 使用Java将Json数组转换为Lua_Table格式的工具
 主要用于支持Lua为主要开发语言的游戏
 
-开发中。。。。（进度30/100）
-
-目前完成功能: 单层JSON转换Lua_Table , JsonArray 转换数组
+目前功能: JSON转换Lua_Table , JsonArray 转换数组
