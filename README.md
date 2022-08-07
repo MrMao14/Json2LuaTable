@@ -1,4 +1,4 @@
-# Json2LuaTable
+# Json2LuaTable [![Java CI with Maven](https://github.com/MrMao14/Json2LuaTable/actions/workflows/maven.yml/badge.svg)](https://github.com/MrMao14/Json2LuaTable/actions/workflows/maven.yml)
 This Project can convert json to lua table
 <br>
 Mainly used in some lua game management background
