@@ -5,7 +5,7 @@
 
     <groupId>com.mrmao</groupId>
     <artifactId>Json2LuaTable</artifactId>
-    <version>1.0.0</version>
+    <version>1.1.0</version>
     <name>Json2LuaTable</name>
     <description>This Project Can Use Java Convert Json To Lua Table</description>
 
@@ -22,6 +22,14 @@
             <version>5.8.3</version>
         </dependency>
     </dependencies>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub OWNER Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/MrMao14/Json2LuaTable</url>
+        </repository>
+    </distributionManagement>
 
 
     <build>
