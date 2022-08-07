@@ -5,7 +5,7 @@
 
     <groupId>com.mrmao</groupId>
     <artifactId>Json2LuaTable</artifactId>
-    <version>1.0.0-beta</version>
+    <version>1.0.0</version>
     <name>Json2LuaTable</name>
     <description>This Project Can Use Java Convert Json To Lua Table</description>
 

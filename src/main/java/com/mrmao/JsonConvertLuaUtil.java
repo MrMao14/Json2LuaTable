@@ -12,7 +12,7 @@ import java.util.Set;
  * @author: MrMao
  * @Date: 2022/8/2
  **/
-public class JsonConvertUtil {
+public class JsonConvertLuaUtil {
 
     /**
      * Get system new line character to adapt windows and macOS
