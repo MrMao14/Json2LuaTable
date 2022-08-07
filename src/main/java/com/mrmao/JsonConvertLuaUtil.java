@@ -37,6 +37,10 @@ public class JsonConvertLuaUtil {
         return stringBuilder.toString();
     }
 
+    public static String toLuaTable(String jsonString){
+        return toLuaTable(JSONUtil.parseObj(jsonString));
+    }
+
     private static int childLevel = 1;
     private static void appendValue(StringBuilder stringBuilder, JSONObject jsonObject) {
         //Json key set
