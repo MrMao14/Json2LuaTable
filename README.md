@@ -1,5 +1,30 @@
 # Json2LuaTable
-使用Java将Json数组转换为Lua_Table格式的工具
-主要用于支持Lua为主要开发语言的游戏
-
-目前功能: JSON转换Lua_Table , JsonArray 转换数组
+This Project can convert json to lua table
+<br>
+Mainly used in some lua game management background
+## How to use
+- code
+```java
+String jsonString = "{\"string\":\"abc\",\"int\":123,\"boolean\":false,\"Object\":{\"obj1\":123,\"obj2\":\"abc\"},\"array\":[\"aaa\",\"bbb\",\"ccc\"]}";
+System.out.println(JsonConvertLuaUtil.toLuaTable(jsonString));
+```
+- result
+```
+{
+  ["string"] = "abc",
+  ["int"] = 123,
+  ["boolean"] = nil,
+  ["Object"] = {
+    ["obj1"] = 123,
+    ["obj2"] = "abc"
+  },
+  ["array"] = [
+    "aaa",
+    "bbb",
+    "ccc"
+  ]
+}
+```
+## Feature
+- Convert json file to lua table file
+- lua table json to json String
