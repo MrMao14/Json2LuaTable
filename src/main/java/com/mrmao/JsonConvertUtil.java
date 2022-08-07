@@ -21,6 +21,7 @@ public class JsonConvertUtil {
 
     /**
      * Convert JsonString to Lua Table
+     *
      * @param jsonObject JsonString to be converted
      * @return Lua table String
      */
@@ -29,31 +30,47 @@ public class JsonConvertUtil {
         StringBuilder stringBuilder = new StringBuilder();
         //Bypass start with [return : ]
         stringBuilder.append("{").append(NEW_LINE_CHARACTER);
+        //start append
+        appendValue(stringBuilder, jsonObject);
+        stringBuilder.append(NEW_LINE_CHARACTER).append("}");
+
+        return stringBuilder.toString();
+    }
+
+    private static int childLevel = 1;
+    private static void appendValue(StringBuilder stringBuilder, JSONObject jsonObject) {
         //Json key set
         Set<Map.Entry<String, Object>> entries = jsonObject.entrySet();
 
         for (Map.Entry<String, Object> entry : entries) {
             Object str = jsonObject.getObj(entry.getKey());
-            int childLevel = 1;
             if (str.toString().startsWith("[")) {
                 //Append list beginning
                 stringBuilder.append("  [\"").append(entry.getKey()).append("\"]")
-                        .append(" = {").append(NEW_LINE_CHARACTER);
+                        .append(" = [").append(NEW_LINE_CHARACTER);
                 JSONArray objects = JSONUtil.parseArray(str);
                 //Start append
                 Iterator<Object> iterator = objects.stream().iterator();
                 while (iterator.hasNext()) {
-                    stringBuilder.append("    ");
+                    appendSpace(stringBuilder, childLevel + 1);
                     //Start process Value
                     valueHandle(stringBuilder, iterator.next());
                 }
                 stringBuilder.deleteCharAt(stringBuilder.lastIndexOf(","));
-                stringBuilder.append("  },").append(NEW_LINE_CHARACTER);
+                stringBuilder.append("  ],").append(NEW_LINE_CHARACTER);
+            } else if (str.toString().startsWith("{")) {
+                appendSpace(stringBuilder, childLevel);
+                //Append key
+                stringBuilder.append("[\"").append(entry.getKey()).append("\"]")
+                        .append(" = {").append(NEW_LINE_CHARACTER);
+                childLevel++;
+                appendValue(stringBuilder, jsonObject.getJSONObject(entry.getKey()));
+                childLevel--;
+                stringBuilder.append(NEW_LINE_CHARACTER);
+                appendSpace(stringBuilder, childLevel);
+                stringBuilder.append("},").append(NEW_LINE_CHARACTER);
             } else {
-                //Format String
-                for (int i = 0; i < childLevel; i++) {
-                    stringBuilder.append("  ");
-                }
+                appendSpace(stringBuilder, childLevel);
                 //Append key
                 stringBuilder.append("[\"").append(entry.getKey()).append("\"]")
                         .append(" = ");
@@ -63,13 +80,6 @@ public class JsonConvertUtil {
         }
         //Remove last ","
         stringBuilder.delete(stringBuilder.lastIndexOf(","), stringBuilder.length());
-        stringBuilder.append(NEW_LINE_CHARACTER).append("}");
-
-        return stringBuilder.toString();
-    }
-
-    private static void appendChildJson(String stringBuilder, JSONObject jsonObject) {
-        //todo
     }
 
     /**
@@ -94,6 +104,19 @@ public class JsonConvertUtil {
             stringBuilder.append(str);
         }
         stringBuilder.append(",").append(NEW_LINE_CHARACTER);
+    }
+
+    /**
+     * Append space in stringBuilder
+     *
+     * @param stringBuilder Concatenated string
+     * @param childLevel    what level
+     */
+    private static void appendSpace(StringBuilder stringBuilder, int childLevel) {
+        //Format String
+        for (int i = 0; i < childLevel; i++) {
+            stringBuilder.append("  ");
+        }
     }
 
 }
