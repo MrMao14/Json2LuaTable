@@ -1,4 +1,4 @@
-# Json2LuaTable
+# Json2LuaTable [![Java CI with Maven](https://github.com/MrMao14/Json2LuaTable/actions/workflows/maven.yml/badge.svg)](https://github.com/MrMao14/Json2LuaTable/actions/workflows/maven.yml)
 这个项目可以将Json转换为LuaTable的格式
 <br>
 主要用于部分Lua构建的游戏管理后台
